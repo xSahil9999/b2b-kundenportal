@@ -1,15 +1,21 @@
-# B2B‑Kundenportal (Django + DRF + Celery + Docker)
+# B2B-Kundenportal – gebaut mit Django, DRF, Celery & Docker
 
-Ein professionelles Webportal für Geschäftskunden. Kunden sehen Rechnungen, erstellen Support‑Tickets und kommunizieren mit dem Unternehmen; Admin/Support verwalten Benutzer, Rechnungen, Tickets und E‑Mails. Der Code ist modular, produktionsnah und Docker‑fähig – ideal als Referenzprojekt in Bewerbungen.
+Das hier ist ein Webportal, das ich für Geschäftskunden entwickelt habe. Die Idee: Kunden können ihre Rechnungen einsehen, Support-Tickets erstellen und direkt mit dem Unternehmen kommunizieren. Auf der anderen Seite haben Admins und Support-Mitarbeiter alles im Blick – Nutzer, Rechnungen, Tickets und E-Mails. Der Code ist modular aufgebaut, realitätsnah und komplett dockerisiert. Ich nutze es gern als Referenzprojekt in Bewerbungen oder zur Weiterentwicklung.
 
-## Highlights
-- Rollenbasiert: Admin, Kunde, Support (Custom User)
-- Rechnungsarchiv mit PDF‑Upload/Download und Admin‑Zuweisung
-- Ticket‑System mit Status und Kommentaren
-- REST‑API (Token‑Auth, Filter, Suche, Sortierung, Pagination)
-- Admin‑UI in modernem Design (Jazzmin), WhiteNoise für Static Files
-- Hintergrundjobs mit Celery + Redis (z. B. Rechnungs‑E‑Mail)
-- Docker‑Setup: MySQL, Redis, Web (Gunicorn), Worker
+## Was drin steckt
+Rollenbasierte Benutzerverwaltung: Admin, Kunde, Support (Custom User-Modell)
+
+Rechnungsarchiv mit PDF-Upload/Download und Zuweisung durch Admins
+
+Ticket-System mit Status, Kommentaren und Verlauf
+
+REST-API mit Token-Auth, Filtermöglichkeiten, Suche, Sortierung und Pagination
+
+Admin-Oberfläche im modernen Look (Jazzmin), statische Dateien via WhiteNoise
+
+Hintergrundjobs mit Celery + Redis (z. B. automatische Rechnungs-E-Mails)
+
+Docker-Setup mit MySQL, Redis, Gunicorn und Worker-Container
 
 ## Tech Stack
 - Backend: Django 5, Django REST Framework
