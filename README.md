@@ -2,6 +2,7 @@
 
 Das hier ist ein Webportal, das ich für Geschäftskunden entwickelt habe. Die Idee: Kunden können ihre Rechnungen einsehen, Support-Tickets erstellen und direkt mit dem Unternehmen kommunizieren. Auf der anderen Seite haben Admins und Support-Mitarbeiter alles im Blick – Nutzer, Rechnungen, Tickets und E-Mails. Der Code ist modular aufgebaut, realitätsnah und komplett dockerisiert. Ich nutze es gern als Referenzprojekt in Bewerbungen oder zur Weiterentwicklung.
 
+
 ## Was drin steckt
 Rollenbasierte Benutzerverwaltung: Admin, Kunde, Support (Custom User-Modell)
 
