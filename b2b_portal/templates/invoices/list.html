@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load roles %}
+{% block title %}Rechnungen{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center">
+  <h3>Rechnungen</h3>
+  {% if user|has_role:"admin" or user|has_role:"support" %}
+    <a class="btn btn-primary" href="upload/">Rechnung hochladen</a>
+  {% endif %}
+</div>
+<table class="table table-striped">
+  <thead><tr><th>Nummer</th><th>Kunde</th><th>Betrag</th><th>Datum</th></tr></thead>
+  <tbody>
+    {% for inv in invoices %}
+    <tr>
+      <td><a href="{{ inv.id }}/">{{ inv.number }}</a></td>
+      <td>{{ inv.customer.username }}</td>
+      <td>{{ inv.amount }} €</td>
+      <td>{{ inv.invoice_date }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="4">Keine Rechnungen.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

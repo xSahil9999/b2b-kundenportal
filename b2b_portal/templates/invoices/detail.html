@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Rechnung {{ invoice.number }}{% endblock %}
+{% block content %}
+<h3>Rechnung {{ invoice.number }}</h3>
+<p>Betrag: {{ invoice.amount }} €</p>
+<p>Datum: {{ invoice.invoice_date }}</p>
+<p>
+  {% if invoice.pdf %}
+    <a class="btn btn-sm btn-outline-primary" href="{{ invoice.pdf.url }}" target="_blank">PDF öffnen</a>
+  {% else %}
+    Kein PDF vorhanden.
+  {% endif %}
+</p>
+{% endblock %}
+

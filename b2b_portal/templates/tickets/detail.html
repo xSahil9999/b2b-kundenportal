@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Ticket #{{ ticket.id }}{% endblock %}
+{% block content %}
+<h3>#{{ ticket.id }} - {{ ticket.title }}</h3>
+<p>Status: <strong>{{ ticket.get_status_display }}</strong></p>
+<p>{{ ticket.description }}</p>
+
+<hr>
+<h5>Kommentare</h5>
+<ul class="list-group mb-3">
+  {% for c in ticket.comments.all %}
+    <li class="list-group-item"><strong>{{ c.author.username }}</strong>: {{ c.message }} <span class="text-muted float-end">{{ c.created_at }}</span></li>
+  {% empty %}
+    <li class="list-group-item">Keine Kommentare.</li>
+  {% endfor %}
+  </ul>
+<form method="post">
+  {% csrf_token %}
+  <div class="input-group">
+    <input class="form-control" name="message" placeholder="Kommentar hinzufügen" required>
+    <button class="btn btn-outline-primary">Senden</button>
+  </div>
+</form>
+{% endblock %}
+

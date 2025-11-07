@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load roles %}
+{% block title %}Rechnung hochladen{% endblock %}
+{% block content %}
+<h3>Rechnung hochladen</h3>
+<form method="post" enctype="multipart/form-data" class="mt-3">
+  {% csrf_token %}
+  {{ form.non_field_errors }}
+  <div class="row g-3">
+    <div class="col-md-4">{{ form.number.label_tag }} {{ form.number }}</div>
+    <div class="col-md-4">{{ form.amount.label_tag }} {{ form.amount }}</div>
+    <div class="col-md-4">{{ form.invoice_date.label_tag }} {{ form.invoice_date }}</div>
+  </div>
+  <div class="row g-3 mt-2">
+    <div class="col-md-6">{{ form.pdf.label_tag }} {{ form.pdf }}</div>
+    <div class="col-md-6">{{ form.customer.label_tag }} {{ form.customer }}</div>
+  </div>
+  <button class="btn btn-primary mt-3">Hochladen</button>
+  <a href="/invoices/" class="btn btn-secondary mt-3">Abbrechen</a>
+  <p class="text-muted mt-2">Nur PDF-Dateien bis 20MB.</p>
+  {% if messages %}
+    {% for message in messages %}<div class="alert alert-{{ message.tags }} mt-2">{{ message }}</div>{% endfor %}
+  {% endif %}
+</form>
+{% endblock %}
+

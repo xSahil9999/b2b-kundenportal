@@ -1,0 +1,10 @@
+/* Subtle polish for Jazzmin */
+.content-wrapper .content-header h1 { font-weight: 600; letter-spacing: 0.2px; }
+.card { border: 0; box-shadow: 0 4px 18px rgba(0,0,0,0.06); border-radius: 12px; }
+.small-box { border-radius: 12px; }
+.login-page { background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%); }
+.login-box .card { border-radius: 14px; box-shadow: 0 8px 30px rgba(0,0,0,0.18); }
+.brand-link .brand-image { opacity: 0.95; }
+/* Table tweaks */
+.table thead th { border-bottom: 1px solid rgba(0,0,0,0.075); }
+.table td, .table th { vertical-align: middle; }

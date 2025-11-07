@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Kundenübersicht{% endblock %}
+{% block content %}
+<h3>Willkommen</h3>
+<div class="row g-3">
+  <div class="col-md-6"><div class="card p-3"><h5>Meine Rechnungen</h5><p class="display-6">{{ stats.my_invoices }}</p></div></div>
+  <div class="col-md-6"><div class="card p-3"><h5>Offene Tickets</h5><p class="display-6">{{ stats.my_open_tickets }}</p></div></div>
+</div>
+{% endblock %}
+

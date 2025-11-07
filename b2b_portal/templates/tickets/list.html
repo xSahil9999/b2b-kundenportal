@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Tickets{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center">
+  <h3>Tickets</h3>
+  <a class="btn btn-primary" href="create/">Neues Ticket</a>
+</div>
+<table class="table table-striped mt-3">
+  <thead><tr><th>#</th><th>Titel</th><th>Status</th><th>Kunde</th><th>Erstellt</th></tr></thead>
+  <tbody>
+    {% for t in tickets %}
+    <tr>
+      <td>{{ t.id }}</td>
+      <td><a href="{{ t.id }}/">{{ t.title }}</a></td>
+      <td>{{ t.get_status_display }}</td>
+      <td>{{ t.customer.username }}</td>
+      <td>{{ t.created_at }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5">Keine Tickets.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+

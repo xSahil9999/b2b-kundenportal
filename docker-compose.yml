@@ -1,0 +1,67 @@
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: b2b_portal
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+      MYSQL_ROOT_PASSWORD: root
+    command: ["--default-authentication-plugin=mysql_native_password", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+  web:
+    build: .
+    command: ["gunicorn", "core.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3"]
+    env_file:
+      - b2b_portal/.env
+    environment:
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: b2b_portal
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+      SITE_URL: http://localhost:8000
+      EMAIL_BACKEND: django.core.mail.backends.console.EmailBackend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - media:/app/media
+      - staticfiles:/app/staticfiles
+
+  worker:
+    build: .
+    command: ["celery", "-A", "core.celery_app", "worker", "-l", "info"]
+    env_file:
+      - b2b_portal/.env
+    environment:
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: b2b_portal
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+      SITE_URL: http://web:8000
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - media:/app/media
+
+volumes:
+  db_data:
+  media:
+  staticfiles:
