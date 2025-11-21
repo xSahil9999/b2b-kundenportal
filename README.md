@@ -92,5 +92,4 @@ python manage.py runserver
 - Klare, erweiterbare Architektur und saubere Trennung der Domänen.
 - Praxisrelevante Features (Rechnungen, Tickets, E‑Mail) mit realistischen Technologien.
 
-## Lizenz
-Dieses Beispielprojekt ist ausschließlich zu Demonstrations‑ und Bewerbungszwecken gedacht. (Bei Bedarf kann eine OSS‑Lizenz ergänzt werden.)
+
